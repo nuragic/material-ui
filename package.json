@@ -20,6 +20,7 @@
   },
   "homepage": "https://material-ui.com/",
   "scripts": {
+    "mui:icons": "UV_THREADPOOL_SIZE=64 babel-node --config-file ./babel.config.js packages/material-ui-icons/builder.js",
     "start": "yarn docs:dev",
     "docs:dev": "rimraf node_modules/.cache/babel-loader && cross-env BABEL_ENV=docs-development next dev",
     "docs:api": "yarn docs:api:core && yarn docs:api:lab",
