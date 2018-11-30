@@ -10,6 +10,7 @@ import util from 'util';
 import glob from 'glob';
 import mkdirp from 'mkdirp';
 import SVGO from 'svgo';
+import eol from 'eol';
 
 const globAsync = util.promisify(glob);
 const RENAME_FILTER_DEFAULT = './renameFilters/default';
@@ -148,7 +149,7 @@ async function worker({ svgPath, options, renameFilter, template }) {
   });
 
   const absDestPath = path.join(options.outputDir, destPath);
-  await fse.writeFile(absDestPath, fileString);
+  await fse.writeFile(absDestPath, eol.lf(fileString));
 }
 
 async function main(options) {
