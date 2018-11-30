@@ -133,14 +133,14 @@ async function worker({ svgPath, options, renameFilter, template }) {
     .replace(/ clip-path=".+?"/g, '') // Fix visibility issue and save some bytes.
     .replace(/<clipPath.+?<\/clipPath>/g, ''); // Remove unused definitions
 
-  const sizeMatch = svgPath.match(/^.*_([0-9]+)px.svg$/);
-  const size = sizeMatch ? Number(sizeMatch[1]) : null;
+  // const sizeMatch = svgPath.match(/^.*_([0-9]+)px.svg$/);
+  // const size = sizeMatch ? Number(sizeMatch[1]) : null;
 
-  if (size !== 24) {
-    const scale = Math.round((24 / size) * 100) / 100; // Keep a maximum of 2 decimals
-    paths = paths.replace('clipPath="url(#b)" ', '');
-    paths = paths.replace(/<path /g, `<path transform="scale(${scale}, ${scale})" `);
-  }
+  // if (size !== 24) {
+  //   const scale = Math.round((24 / size) * 100) / 100; // Keep a maximum of 2 decimals
+  //   paths = paths.replace('clipPath="url(#b)" ', '');
+  //   paths = paths.replace(/<path /g, `<path transform="scale(${scale}, ${scale})" `);
+  // }
 
   const fileString = Mustache.render(template, {
     paths,
